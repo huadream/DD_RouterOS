@@ -127,8 +127,8 @@ esac
 
 #######download and extract ROS image zip file
 #ros version
-#ROS_VER="6.49.15"
-ROS_VER=` curl -sL https://download.mikrotik.com/routeros/latest-stable-and-long-term.rss | awk '/\[stable\]/ {print $2}' `
+ROS_VER="7.20.6"
+#ROS_VER=` curl -sL https://download.mikrotik.com/routeros/latest-stable-and-long-term.rss | awk '/\[stable\]/ {print $2}' `
 echo "ROS image version : $ROS_VER"
 
 #download image zip file
@@ -137,8 +137,8 @@ wget https://download.mikrotik.com/routeros/$ROS_VER/chr-$ROS_VER.img.zip -O chr
 
 #extract image zip file to ramfs
 mkdir -p /mnt/img
-mount -t ramfs rampart /mnt/img
-gunzip -c chr.img.zip > /mnt/img/chr.img
+unzip -t chr.img.zip
+unzip -p chr.img.zip > chr.img
 [ $? -ne 0 ] && echo 'Error on extract image file!' && exit 1
 
 ########modify image
