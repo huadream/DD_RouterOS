@@ -138,7 +138,7 @@ wget https://download.mikrotik.com/routeros/$ROS_VER/chr-$ROS_VER.img.zip -O chr
 #extract image zip file to ramfs
 mkdir -p /mnt/img
 unzip -t chr.img.zip
-unzip -p chr.img.zip > chr.img
+unzip -p chr.img.zip > /mnt/img/chr.img
 [ $? -ne 0 ] && echo 'Error on extract image file!' && exit 1
 
 ########modify image
